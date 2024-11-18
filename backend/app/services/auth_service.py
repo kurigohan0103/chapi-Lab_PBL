@@ -4,6 +4,7 @@ from fastapi import HTTPException, status
 from sqlalchemy.orm import Session
 from app.models import User  # ユーザーモデルをインポート
 from ..schemas.auth import UserCreate  # ユーザー作成用スキーマ
+from app.token_service import SECRET_KEY, ALGORITHM  # token_serviceからインポート
 
 
 # pwd_context: bcryptを利用してパスワードのハッシュ化と検証を行うための設定
@@ -50,7 +51,7 @@ def create_user(db: Session, user: UserCreate):
 
 def authenticate_user(db: Session, username: str, password: str):
     """
-    ユーザー認証を行う関数。
+    ユーザー認証を行う関数．
     :param db: データベースセッション
     :param username: ユーザー名
     :param password: 平文のパスワード
@@ -73,3 +74,27 @@ def invalidate_token(token: str):
     blacklisted_tokens = set()  # 仮のセットで管理
     blacklisted_tokens.add(token)
     return {"message": "Token has been invalidated"}
+
+# トークンから現在のユーザーを取得する関数
+def get_current_user(token: str, db: Session = Depends(get_db)) -> User:
+    credentials_exception = HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Could not validate credentials",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+    
+    try:
+        # トークンのデコードとペイロードの検証
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        username: str = payload.get("sub")
+        if username is None:
+            raise credentials_exception
+        token_data = TokenData(username=username)
+    except JWTError:
+        raise credentials_exception
+
+    # データベースからユーザーを取得
+    user = db.query(User).filter(User.username == token_data.username).first()
+    if user is None:
+        raise credentials_exception
+    return user

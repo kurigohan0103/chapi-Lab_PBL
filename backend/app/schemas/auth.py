@@ -17,3 +17,6 @@ class Token(BaseModel):
     access_token: str
     # トークンのタイプ（通常は "Bearer"）
     token_type: str
+
+class TokenData(BaseModel):
+    username: Optional[str] = None  # トークン内に含まれるユーザー名を保持

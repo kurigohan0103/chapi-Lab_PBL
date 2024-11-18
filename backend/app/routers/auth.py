@@ -17,8 +17,10 @@ def register(user: UserCreate, db: Session = Depends(get_db)):
     :param db: データベースセッション
     :return: アクセストークン
     """
-    db_user = create_user(db, user)  # 新しいユーザーを作成
-    access_token = create_access_token(data={"sub": db_user.username})  # トークンを生成
+    # services/auth_service.pyのcreate_user関数を呼び出して新しいユーザーを作成
+    db_user = create_user(db, user)
+    # services/token_service.pyのcreate_access_tokenを呼び出してトークンを生成
+    access_token = create_access_token(data={"sub": db_user.username})
     return {"access_token": access_token, "token_type": "bearer"}  # トークンを返す
 
 @router.post("/login", response_model=Token)

@@ -1,16 +1,20 @@
 "use client";
-
-// import { useState } from "react";
-// import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 
 export default function Logout() {
+
+    const router = useRouter();
+
     // ログアウト処理を行う関数
     const handleLogout = () => {
       // ローカルストレージからトークンを削除
       localStorage.removeItem('token');
-      alert('Logged out successfully'); // ログアウト成功時のアラート
-      console.log('User logged out'); // ログアウトログをコンソールに出力
+      // ログアウト成功時のアラート
+      alert('Logged out successfully');
+      // ログアウトログをコンソールに出力
+      console.log('User logged out');
+      router.push('/');
     };
   
     return (
