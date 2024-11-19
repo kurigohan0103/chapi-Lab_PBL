@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
 import "../../styles/Home.css";
-import "../../node_modules/moretoggles/output/moretoggles.min.css";
+import "../../styles/moretoggles/output/moretoggles.min.css";
 
 export default function Home() {
     // トグルの変更イベントを設定
