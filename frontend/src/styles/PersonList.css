@@ -1,0 +1,35 @@
+.person-list-container {
+    display: flex; /* コンテナ全体をフレックスボックス化 */
+    justify-content: center; /* 中央揃え */
+    align-items: center; /* 縦方向の中央揃え（必要なら） */
+    padding: 20px;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 100px); /* 横に3列で表示 */
+    gap: 20px; /* 各アイテムの間隔 */
+    justify-content: center; /* グリッド全体を中央揃え */
+}
+
+.image-item {
+    display: flex;
+    flex-direction: column; /* 縦方向に配置 */
+    align-items: center; /* 中央揃え */
+}
+
+.image-item img {
+    width: 100px; /* 固定幅 */
+    height: 100px; /* 固定高さ */
+    object-fit: cover; /* 縦横比を維持して枠内に収める */
+    border: 1px solid #ddd; /* 枠線 */
+    border-radius: 5px; /* 角を丸くする */
+}
+
+.loading-container {
+    display: flex;
+    justify-content: center; /* 水平方向に中央揃え */
+    height: 100vh; /* ビューポート全体の高さ */
+    font-size: 24px; /* フォントサイズを大きく設定 */
+    color: #333; /* 文字色を指定 */
+}

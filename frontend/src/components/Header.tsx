@@ -45,10 +45,10 @@ export default function Header() {
             {/* 左端のアイコンボタン */}
             <button className="menu-icon" onClick={toggleMenu}>
             <Image
-                    src="/image/menu-icon.png"
+                    src="/images/menu-icon.png"
                     alt="Menu Icon"
-                    width={30}
-                    height={30}
+                    width={50}
+                    height={50}
                 />
             </button>
 
@@ -56,13 +56,13 @@ export default function Header() {
             <nav className={`nav-menu ${isMenuOpen ? "open" : ""}`}>
                 <ul>
                     <li>
-                        <Link href="/home" onClick={closeMenu}>HOME</Link>
-                    </li>
-                    <li>
-                        <Link href="/mypage" onClick={closeMenu}>MyPage</Link>
+                        <Link href="/" onClick={closeMenu}>HOME</Link>
                     </li>
                     <li>
                         <Link href="/robot" onClick={closeMenu}>Robot</Link>
+                    </li>
+                    <li>
+                        <Link href="/robot/person-list" onClick={closeMenu}>Suspicious Person</Link>
                     </li>
                     <li>
                         <Link href="/weather" onClick={closeMenu}>Weather</Link>

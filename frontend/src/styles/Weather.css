@@ -1,0 +1,56 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+    padding: 20px;
+}
+
+.loading,
+.error {
+    font-weight: bold;
+}
+
+.error {
+    color: red;
+}
+
+.weatherList {
+    list-style-type: none;
+    padding: 0;
+}
+
+.weatherItem {
+    margin-bottom: 20px;
+    text-align: center;
+    width: 300px;
+}
+
+.weatherIcon {
+    width: 300px;
+    height: 250px;
+}
+
+.rainyText {
+    color: red;
+    font-weight: bold;
+    font-size: 20px; /* フォントサイズを調整 */
+}
+
+.sunnyText {
+    color: blue;
+    font-weight: bold;
+    font-size: 20px; /* フォントサイズを調整 */
+}
+
+.weatherLocation {
+    font-size: 20px; /* Locationのフォントサイズ */
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.weatherChance {
+    font-size: 20px; /* 降水確率のフォントサイズ */
+    font-weight: bold;
+    margin-top: 5px;
+}
