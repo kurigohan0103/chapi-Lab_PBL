@@ -5,7 +5,8 @@ import axios from 'axios';
 const api = axios.create({
     // 環境変数に基づいてベースURLを設定
     // NEXT_PUBLIC接頭辞により環境変数がフロントエンド（ブラウザ側）でアクセス可能
-    baseURL: process.env.NEXT_PUBLIC_API_URL, 
+    // baseURL: process.env.NEXT_PUBLIC_API_URL, 
+    baseURL: "https://liger-vocal-mistakenly.ngrok-free.app",
 });
 
 // トークンをリクエストのヘッダーに自動的に追加するインターセプターを設定
